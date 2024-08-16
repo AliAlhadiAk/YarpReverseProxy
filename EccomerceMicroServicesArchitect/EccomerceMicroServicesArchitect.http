@@ -1,0 +1,6 @@
+@EccomerceMicroServicesArchitect_HostAddress = http://localhost:5252
+
+GET {{EccomerceMicroServicesArchitect_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

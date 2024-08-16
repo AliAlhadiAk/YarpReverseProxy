@@ -1,0 +1,46 @@
+version: '3.8'  
+
+services:
+  apigateway.yarp:
+    image: ${DOCKER_REGISTRY-}apigatewayyarp
+    build:
+      context: ../ApiGateway.Yarp
+      dockerfile: ApiGateway.Yarp/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork
+
+  productservice:  
+    image: ${DOCKER_REGISTRY-}productservice  
+    build:
+      context: ../ProductService
+      dockerfile: ProductService/Dockerfile
+    ports:
+      - "8081:80"
+    networks:
+      - mynetwork
+
+  identityservice:  
+    image: ${DOCKER_REGISTRY-}identityservice  
+    build:
+      context: ../IdentityService
+      dockerfile: IdentityService/Dockerfile
+    ports:
+      - "8082:80"
+    networks:
+      - mynetwork
+
+  orderservice:  
+    image: ${DOCKER_REGISTRY-}orderservice 
+    build:
+      context: ../OrderService
+      dockerfile: OrderService/Dockerfile
+    ports:
+      - "8083:80"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
